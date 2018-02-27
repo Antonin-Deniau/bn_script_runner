@@ -1,10 +1,14 @@
 from binaryninja.plugin import BackgroundTaskThread
 import socket, select, sys, traceback
 import config
+import imp
 
-def exec_cmd(bv, res):
-	cc = compile(res, "<string>", "exec")
- 	eval(cc, globals(), locals())
+
+def exec_cmd(bv, path):
+	#imp.load_source('<script>', path)
+	source = open(path).read()
+	code = compile(source, path, 'exec')
+	exec(code, locals())
 
 def start_server(bv):
 	sok = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -14,7 +18,6 @@ def start_server(bv):
 
 	while True:
 		client, address = sok.accept()
-		print "{} connected".format( address )
 
 		res = ""
 		while True:
