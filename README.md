@@ -41,7 +41,7 @@ You can also launch script with the bnrunner executable in both platform `bnrunn
 ### Installing
 
 - Copy the script_runner directory in your binaryninja plugin folder.
-- Install the bnrunner python package `pip install bnrunner`.
+- Install the [bnrunner](https://github.com/Antonin-Deniau/bnrunner) python package `pip install bnrunner`.
 - Now all the python scripts that you will execute with bnrunner will be sent to the binaryninja instance.
 
 ## License
