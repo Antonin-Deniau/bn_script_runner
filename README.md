@@ -21,12 +21,29 @@ block.highlight = HighlightStandardColor.BlueHighlightColor
 print(bv)
 ```
 
+Or on Windows:
+
+```python
+import bnrunner
+from binaryninja import HighlightStandardColor
+
+def main(): 
+    block = bv.get_basic_blocks_at(0x8670)[0]
+    block.highlight = HighlightStandardColor.BlueHighlightColor
+    print(bv)
+
+bnrunner.run_from_path() if __name__ == '__main__' else main()
+```
+
+You can also launch script with the bnrunner executable in both platform `bnrunner script.py`
+
+
 ### Installing
 
 - Copy the script_runner directory in your binaryninja plugin folder.
-- Copy the bnrunner.py file in your path, without the .py extension.
-- Make it executable with chmod.
-- Now all the python scripts that you will execute with bnrunner will be sent to the binaryninja instance.   
+- Install the bnrunner python package `pip install bnrunner`.
+- Now all the python scripts that you will execute with bnrunner will be sent to the binaryninja instance.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
