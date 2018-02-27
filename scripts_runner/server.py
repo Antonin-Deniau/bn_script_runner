@@ -1,11 +1,8 @@
 from binaryninja.plugin import BackgroundTaskThread
 import socket, select, sys, traceback
 import config
-import imp
-
 
 def exec_cmd(bv, path):
-	#imp.load_source('<script>', path)
 	source = open(path).read()
 	code = compile(source, path, 'exec')
 	exec(code, locals())
