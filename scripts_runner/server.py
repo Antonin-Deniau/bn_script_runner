@@ -1,6 +1,7 @@
 from binaryninja.plugin import BackgroundTaskThread
-import socket, select, sys, traceback
+import socket, select, sys, traceback, os
 import config
+
 
 def exec_cmd(bv, path):
 	source = open(path).read()
@@ -33,6 +34,9 @@ def start_server(bv):
 		sys.stdout = file
 		sys.stderr = file
 
+		dir_path = os.path.dirname(res)
+		sys.path.append(dir_path)
+
 		try:
 			exec_cmd(bv, res)
 		except:
@@ -40,6 +44,7 @@ def start_server(bv):
 		finally:
 			sys.stderr = bak_err
 			sys.stdout = bak_out
+			sys.path.pop()
 
 			client.shutdown(2)
 			client.close()
